@@ -9,7 +9,7 @@ export const composer = ({context, itemId, clearErrors}, onData) => {
      const item = Collections.Items.findOne(itemId);
      onData(null, {item, error});
     } else {
-      const item = Collection.Items.findOne(itemId);
+      const item = Collections.Items.findOne(itemId);
       if (item) {
        onData(null, {item}); 
       } else {
