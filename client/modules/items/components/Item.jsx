@@ -1,7 +1,7 @@
 import React from 'react';
 import {Row, Col, Panel, Glyphicon, Input} from 'react-bootstrap';
 
-class Item extends React.component {
+class Item extends React.Component {
   render() {
     const {item} = this.props;
     return (
@@ -22,7 +22,8 @@ class Item extends React.component {
         </Row>
         <Row>
          <Col xs={12}>
-           <Input type="checkbox" label="Complete?" />
+           <Input ref="complete" type="checkbox" label="Complete?" 
+            onChange={this.markComplete.bind(this)} />
          </Col>
         </Row>
       </Panel>
@@ -33,7 +34,7 @@ class Item extends React.component {
   markComplete() {
     const complete = this.refs.complete.getChecked();
     const itemId = this.props.item._id;
-    Meteor.call('items.markComplete', complete. itemId);
+    Meteor.call('items.markComplete', complete, itemId);
   }
 }
 
