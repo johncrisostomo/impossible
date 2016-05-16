@@ -15,7 +15,7 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'items.list',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<ItemList />)
+        content: () => (<ItemList currentDate={new Date()} />)
       });
     }
   });

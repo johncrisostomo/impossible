@@ -1,12 +1,16 @@
 import React from 'react';
 import {Row, Col, Panel, Glyphicon, Input} from 'react-bootstrap';
+import moment from 'moment';
 
 class Item extends React.Component {
   render() {
     const {item} = this.props;
+    const currentDate = new Date();
+    const style = item.due < currentDate ? {'border': 'solid 1px red'} : {
+      'border': 'solid 1px #e3e3e3' };
     return (
       <Col xs={4}>
-      <Panel>
+      <Panel style={style}>
         <Row>
          <Col xs={10}>
            <h2>{item.name}</h2>
@@ -17,7 +21,8 @@ class Item extends React.Component {
         </Row>
         <Row>
          <Col xs={12}>
-           <p>{item.description}</p>
+           <p>{item.description} {item.due ? '-' + 
+             moment(Number(item.due)).format("MM/DD/YYYY") : '' } </p>
          </Col>
         </Row>
         <Row>
